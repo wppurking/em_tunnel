@@ -49,6 +49,7 @@ module Local
     send_data "\x05\xFF" if ver != 5 
 
     # 这里不管 nmethods 提交的是需要什么验证, 先直接返回验证成功试试; 这次请求完毕, 清理 @data
+    #TODO 这里需要考虑, 如果 @data 中已经存在的数据大于 2 bytes 时, 多余的数据不应该被清理掉.
     @data = ''
     send_data "\x05\x00"
   end
